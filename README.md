@@ -4,7 +4,7 @@ This project demonstrates real-time hand gesture classification using a pre-trai
 
 **Requirements:**
 
-- Python 3.x
+- Python 3.10
 - Necessary libraries (install using `pip install -r requirements.txt`)
 
 **Model Download:**
