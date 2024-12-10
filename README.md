@@ -16,19 +16,3 @@ This project demonstrates real-time hand gesture classification using a pre-trai
 
 1. **Install dependencies:** Execute `pip install -r requirements.txt` to install the required libraries.
 2. **Run the script:** Navigate to the project directory and run `python inference.py` to start the real-time classification.
-
-**Explanation:**
-
-(Provide a brief explanation of the project's functionality, including how it interacts with the webcam and displays results)
-
-**Usage:**
-
-(Describe how to use the application, including any specific gestures it recognizes and how the predicted labels are displayed)
-
-**Further Development:**
-
-(Optional: Briefly mention potential areas for improvement or future enhancements)
-
-**License:**
-
-(Specify the license under which the code is distributed)
