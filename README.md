@@ -15,4 +15,6 @@ This project demonstrates real-time hand gesture classification using a pre-trai
 **Running the Inference:**
 
 1. **Install dependencies:** Execute `pip install -r requirements.txt` to install the required libraries.
+   if you are using conda then you can recreate my environment using the command `conda create --name newenv --file condaenvlist.txt`
+   remember to activate the newly created environment `conda activate newenv`
 2. **Run the script:** Navigate to the project directory and run `python test.py` to start the real-time classification.
