@@ -71,6 +71,7 @@ def process_frame(frame_queue, result_queue, model):
         else:
             result_queue.put((frame, None, None))
 
+
 def main():
     model_dict = pickle.load(open('model.p', 'rb'))
     model = model_dict['model']
@@ -106,6 +107,12 @@ def main():
         if timer >= 30 and current_char:
             if current_char == 'space':
                 sentence += ' '
+                audio_buffer = BytesIO()
+                speech = gTTS(text='space', lang='en', slow=False)
+                speech.write_to_fp(audio_buffer)
+                audio_buffer.seek(0)
+                pygame.mixer.music.load(audio_buffer, 'mp3')
+                pygame.mixer.music.play()
             elif current_char == 'del':
                 if sentence:
                     spoken_sentences.append(sentence)
@@ -170,6 +177,9 @@ def main():
     style.configure("TFrame", background="lightblue")
     style.configure("TLabel", background="lightblue", font=("Arial", 18))
     style.configure("TProgressbar", thickness=20)
+    style.configure("delete.TButton", background="red", foreground="red")
+    style.configure("clear.TButton", background="green", foreground="green")
+    style.configure("view.TButton", background="blue", foreground="blue")
 
     # Main Layout
     main_frame = ttk.Frame(root, padding=10)
@@ -177,6 +187,43 @@ def main():
 
     left_frame = ttk.Frame(main_frame)
     left_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=10)
+
+    button_frame = ttk.Frame(left_frame, width=300)
+    button_frame.pack(fill=tk.BOTH, pady=5)
+
+    def delete_last_character():
+        nonlocal sentence
+        if sentence:
+            sentence = sentence[:-1]
+
+    def clear_text():
+        nonlocal sentence
+        sentence = ""
+
+    def view_signs():
+        """Open a new window displaying an image of sign language gestures."""
+        new_window = tk.Toplevel(root)
+        new_window.title("Sign Language Reference")
+        new_window.geometry("1280x720")
+
+        # Load and display an example image of sign language
+        img = Image.open("signs.png")  # Replace with your image path
+        img = img.resize((1280, 720), Image.Resampling.LANCZOS)
+        img_tk = ImageTk.PhotoImage(img)
+
+        img_label = tk.Label(new_window, image=img_tk)
+        img_label.image = img_tk  # Keep a reference to avoid garbage collection
+        img_label.pack(fill=tk.BOTH, expand=True)
+
+    # Create buttons
+    btn_delete = ttk.Button(button_frame, text="DELETE", style="delete.TButton", command=delete_last_character)
+    btn_delete.pack(side=tk.LEFT, padx=20, pady=20, expand=True)
+
+    btn_clear = ttk.Button(button_frame, text="CLEAR", style="clear.TButton",command=clear_text)
+    btn_clear.pack(side=tk.LEFT, padx=20, pady=20, expand=True)
+
+    btn_view_signs = ttk.Button(button_frame, text="VIEW SIGNS", style="view.TButton", command=view_signs)
+    btn_view_signs.pack(side=tk.LEFT, padx=20, pady=20, expand=True)
 
     right_frame = ttk.Frame(main_frame)
     right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=10, pady=10)
