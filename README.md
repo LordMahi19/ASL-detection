@@ -19,3 +19,5 @@ This project demonstrates real-time hand gesture classification using a pre-trai
    remember to activate the newly created environment `conda activate newenv`
 2. **Run the script:** Navigate to the project directory and run `python test.py` to start the real-time classification.
    to run the full user interface that lets you create word and sentence, run the `python tkinter_ui.py` file
+
+3. **Dateset:** The dataset we used to train our model can be found here: [https://www.kaggle.com/datasets/debashishsau/aslamerican-sign-language-aplhabet-dataset/data]
