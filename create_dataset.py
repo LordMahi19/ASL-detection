@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
     img_paths = [(dir_, img_path) for dir_ in os.listdir(DATA_DIR) for img_path in os.listdir(os.path.join(DATA_DIR, dir_))]
 
-    with Pool() as pool:
+    with Pool(process=9) as pool:
         results = pool.map(process_image, img_paths)
 
     for result in results:
