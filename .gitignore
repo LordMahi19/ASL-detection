@@ -1,6 +1,6 @@
 /data/
 data.pickle
 model.p
-experiment.py
+visualizing hand coordinates.py
 experiment.pickle
 1.jpg
