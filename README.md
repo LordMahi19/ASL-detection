@@ -1,6 +1,6 @@
 # Hand Gesture Classification with Trained Model
 
-This is continuation of our previous [project]() where we have trained a simple machine learning model that can predict a few sign language charachters. In the previous project we generated a few data ourselves which we used to train the model. But in this project we used a very large dataset to train a model with the same technique. We are adding a few new techniques to work with large dataset. 
+This is continuation of our previous [project](https://github.com/LordMahi19/signlang) where we have trained a simple machine learning model that can predict a few sign language charachters. In the previous project we generated a few data ourselves which we used to train the model. But in this project we used a very large dataset to train a model with the same technique. We are adding a few new techniques to work with large dataset. 
 - We have used pythons built in multiprocessing function to allocate all of our cpu cores when creating the dataset. Since python is by default a single core process, this new technique allows us process the data significantly faster.
 - We have also made a UI out of this model with pythons tkinter library. This UI allows us to make words and sentences with the model. 
 
